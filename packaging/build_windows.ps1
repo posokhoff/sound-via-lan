@@ -20,9 +20,10 @@ python -m PyInstaller packaging\receiver.spec --noconfirm --clean --distpath $Di
 
 Copy-Item -Recurse (Join-Path $Dist "sound-transmitter") (Join-Path $Out "sound-transmitter")
 Copy-Item -Recurse (Join-Path $Dist "sound-receiver") (Join-Path $Out "sound-receiver")
-New-Item -ItemType Directory -Force -Path (Join-Path $Out "configs") | Out-Null
-Copy-Item configs\transmitter.example.json, configs\receiver.example.json (Join-Path $Out "configs")
-Copy-Item README.md, DISTRIBUTION.md (Join-Path $Out) -ErrorAction SilentlyContinue
+$ConfigsOut = Join-Path $Out "configs"
+New-Item -ItemType Directory -Force -Path $ConfigsOut | Out-Null
+Copy-Item configs\transmitter.example.json, configs\receiver.example.json $ConfigsOut
+Copy-Item README.md, DISTRIBUTION.md $Out -ErrorAction SilentlyContinue
 
 $Zip = Join-Path $Root "packages\sound-via-lan-windows-x64.zip"
 if (Test-Path $Zip) { Remove-Item $Zip -Force }

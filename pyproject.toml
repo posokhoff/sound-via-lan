@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sound-via-lan"
+version = "1.0.0"
+description = "LAN audio streaming: transmitter and receiver for Windows and Linux"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "sounddevice>=0.5.0",
+    "soundcard>=0.4.6",
+    "numpy>=1.26.0",
+    "PySide6-Essentials>=6.6.0",
+]
+
+[project.scripts]
+sound-transmitter = "transmitter.__main__:main"
+sound-receiver = "receiver.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["shared*", "transmitter*", "receiver*"]

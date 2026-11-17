@@ -1,0 +1,10 @@
+{
+  "receiver_host": "192.168.1.10",
+  "receiver_port": 5005,
+  "source": "loopback",
+  "device_id": null,
+  "sample_rate": 48000,
+  "channels": 2,
+  "blocksize": 960,
+  "bind_local_ip": ""
+}
